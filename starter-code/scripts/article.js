@@ -23,7 +23,6 @@ Article.prototype.toHtml = function() {
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
   $('#article-template').find('article').attr('data-author', this.author).attr('data-category', this.category);
-  $('article.clearfix').find('.byline a').attr('href', this.authorUrl);
   var template = Handlebars.compile(source);
   return template(this);
 
