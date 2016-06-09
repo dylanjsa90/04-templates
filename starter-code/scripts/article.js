@@ -22,12 +22,22 @@ Article.prototype.toHtml = function() {
   //   or say "(draft)" if it has no publication date:
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-  $('#article-template').find('article').attr('data-author', this.author).attr('data-category', this.category);
   var template = Handlebars.compile(source);
   return template(this);
 
   // TODO: Use the function that Handlebars gave you to return your filled-in
   //       html template for THIS article.
+};
+
+Article.prototype.populateAuthor = function() {
+  var source = $('#author-filter-template').html();
+  var template = Handlebars.compile(source);
+  return template(this);
+};
+Article.prototype.populateCategories = function() {
+  var source = $('#category-filter-template').html();
+  var template = Handlebars.compile(source);
+  return template(this);
 };
 
 ourLocalData.sort(function(a,b) {
@@ -39,5 +49,9 @@ ourLocalData.forEach(function(ele) {
 });
 
 articles.forEach(function(a){
+  $('#author-filter').append(a.populateAuthor());
+  if (!$('#category-filter-categories').contains(a.category)) {
+    $('#category-filter').append(a.populateCategories());
+  }
   $('#articles').append(a.toHtml());
 });

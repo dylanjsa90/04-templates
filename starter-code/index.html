@@ -30,7 +30,15 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
-  </head>
+
+    <script id="author-filter-template" type="text/x-handlebars-template">
+      <option value="{{author}}">{{author}}</option>
+    </script>
+
+    <script id="category-filter-template" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
+</head>
   <body>
     <header class="site-header clearfix">
       <section class="heading-group-h1">
@@ -58,7 +66,7 @@
               <select id="author-filter">
                 <option value="">-- Filter by Authors --</option>
               </select>
-            </li>
+              </li>
             <li>
               <select id="category-filter">
                 <option value="">-- Filter by Categories --</option>
