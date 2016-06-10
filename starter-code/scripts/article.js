@@ -50,8 +50,8 @@ ourLocalData.forEach(function(ele) {
 
 articles.forEach(function(a){
   $('#author-filter').append(a.populateAuthor());
-  if (!$('#category-filter-categories').contains(a.category)) {
-    $('#category-filter').append(a.populateCategories());
-  }
   $('#articles').append(a.toHtml());
+  if (!$('#category-filter:contains("' + a.category + '")')) {
+    $('#category-filter').append(a.populateCategories());
+  } 
 });
