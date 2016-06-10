@@ -17,8 +17,28 @@
       specify the type!
     - Insert correct placeholder properties based on our Model.
     -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
 
-  </head>
+    <script id="author-filter-template" type="text/x-handlebars-template">
+      <option value="{{author}}">{{author}}</option>
+    </script>
+
+    <script id="category-filter-template" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
+</head>
   <body>
     <header class="site-header clearfix">
       <section class="heading-group-h1">
@@ -46,7 +66,7 @@
               <select id="author-filter">
                 <option value="">-- Filter by Authors --</option>
               </select>
-            </li>
+              </li>
             <li>
               <select id="category-filter">
                 <option value="">-- Filter by Categories --</option>
@@ -74,6 +94,7 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <!-- TODO: Include Handlebars.JS from a CDN -->
     <script src="scripts/blogArticles.js"></script>
     <script src="scripts/article.js"></script>
